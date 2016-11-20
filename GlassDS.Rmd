@@ -1,0 +1,36 @@
+---
+title: "Glass Dataset Exploration"
+author: "Naren Vijayakumar"
+date: "11/19/2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libs, message=FALSE, results='hide'}
+library(mlbench)
+library(dplyr)
+library(e1071)
+```
+
+### Loading the Glass Dataset
+```{r load}
+data(Glass)
+str(Glass)
+```
+
+```{r}
+glassPredictors <- Glass %>% select(-Type)
+glassTypes <-  Glass %>% select(Type)
+```
+
+### skewnesss
+```{r}
+skewNess <- apply(glassPredictors,2,skewness)
+skewNess
+```
+
+
+
