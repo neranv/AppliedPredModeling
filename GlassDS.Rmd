@@ -1,8 +1,8 @@
 ---
 title: "Glass Dataset Exploration"
 author: "Naren Vijayakumar"
-date: "11/19/2016"
-output: html_document
+date: "November 19, 2016"
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
@@ -15,22 +15,31 @@ library(dplyr)
 library(e1071)
 ```
 
-### Loading the Glass Dataset
+### Glass Dataset
 ```{r load}
 data(Glass)
 str(Glass)
 ```
-
+There are 9 predictors and 1 outcome. Separating the predictor and outcome variables, we get.
 ```{r}
 glassPredictors <- Glass %>% select(-Type)
 glassTypes <-  Glass %>% select(Type)
 ```
 
-### skewnesss
+### Skewness
+
 ```{r}
 skewNess <- apply(glassPredictors,2,skewness)
 skewNess
 ```
+
+Elements Al and Si are symmetrical
+```{r}
+hist(glassPredictors$Al)
+hist(glassPredictors$Si)
+```
+
+
 
 
 
