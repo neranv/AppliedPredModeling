@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(mlbench)
 library(dplyr)
 library(e1071)
+library(ggplot2)
 ```
 
 ### Glass Dataset
@@ -33,10 +34,27 @@ skewNess <- apply(glassPredictors,2,skewness)
 skewNess
 ```
 
-Elements Al and Si are symmetrical
-```{r}
-hist(glassPredictors$Al)
-hist(glassPredictors$Si)
+```{r hist, echo=FALSE, warning=FALSE, fig.height=4, fig.width=4, message=FALSE}
+# Histogram plot for RI
+ggplot(Glass,aes(RI,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element RI")
+# Histogram plot for Na
+ggplot(Glass,aes(Na,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Na")
+# Histogram plot for Mg
+ggplot(Glass,aes(Mg,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Mg")
+# Histogram plot for Al
+ggplot(Glass,aes(Al,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Al")
+# Histogram plot for Si
+ggplot(Glass,aes(Si,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Si")
+
+# Histogram plot for K
+ggplot(Glass,aes(K,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element K")
+# Histogram plot for Ca
+ggplot(Glass,aes(Ca,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Ca")
+# Histogram plot for Ba
+ggplot(Glass,aes(Ba,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Ba")
+# Histogram plot for Fe
+ggplot(Glass,aes(Fe,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Fe")
+
 ```
 
 
