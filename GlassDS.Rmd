@@ -22,7 +22,7 @@ data(Glass)
 str(Glass)
 ```
 There are 9 predictors and 1 outcome. Separating the predictor and outcome variables, we get.
-```{r}
+```{r predictors}
 glassPredictors <- Glass %>% select(-Type)
 glassTypes <-  Glass %>% select(Type)
 ```
@@ -31,33 +31,37 @@ glassTypes <-  Glass %>% select(Type)
 
 ```{r}
 skewNess <- apply(glassPredictors,2,skewness)
-skewNess
+skewNess[order(-skewNess)]
 ```
 
 ```{r hist, echo=FALSE, warning=FALSE, fig.height=4, fig.width=4, message=FALSE}
-# Histogram plot for RI
-ggplot(Glass,aes(RI,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element RI")
-# Histogram plot for Na
-ggplot(Glass,aes(Na,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Na")
-# Histogram plot for Mg
-ggplot(Glass,aes(Mg,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Mg")
-# Histogram plot for Al
-ggplot(Glass,aes(Al,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Al")
-# Histogram plot for Si
-ggplot(Glass,aes(Si,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Si")
 
 # Histogram plot for K
 ggplot(Glass,aes(K,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element K")
-# Histogram plot for Ca
-ggplot(Glass,aes(Ca,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Ca")
+
 # Histogram plot for Ba
 ggplot(Glass,aes(Ba,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Ba")
+
+# Histogram plot for Ca
+ggplot(Glass,aes(Ca,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Ca")
+
 # Histogram plot for Fe
 ggplot(Glass,aes(Fe,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Fe")
 
+# Histogram plot for RI
+ggplot(Glass,aes(RI,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element RI")
+
+# Histogram plot for Al
+ggplot(Glass,aes(Al,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Al")
+
+# Histogram plot for Na
+ggplot(Glass,aes(Na,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Na")
+
+# Histogram plot for Si
+ggplot(Glass,aes(Si,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Si")
+
+# Histogram plot for Mg
+ggplot(Glass,aes(Mg,fill=Type)) + geom_histogram() + ggtitle("Histogram for the Element Mg")
 ```
-
-
-
 
 
