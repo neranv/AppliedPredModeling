@@ -102,7 +102,30 @@ head(predictedProbs)
 # prediction performance
 table(GermanCreditTest$Class,predictedClasses)
 
-
 ## Between-Model Comparisons
 
+# Building the glm model doesnt need any tuning parametets
+
+
+set.seed(1056)
+logisticReg <- train(Class ~ .,
+                     data = GermanCreditTrain,
+                     method = "glm",
+                     trControl = trainControl(method="repeatedcv",
+                                              repeats = 5))
+
+logisticReg
+
+# using resmaples function to compare 2 models
+
+
+resamp <- resamples(list(SVM=svmFit, Logistic= logisticReg))
+summary(resamp)
+
+modelDifferences <- diff(resamp)
+
+summary(modelDifferences)
+
+#p-values are high for both accuracy and kappa. Hence there is no significant differrence 
+#between the models
 
